@@ -152,13 +152,13 @@ AND NOT EXISTS (SELECT 1 FROM inventory_transactions WHERE operation = 'REMOVE' 
 
 -- Default app settings
 INSERT INTO app_settings (setting_key, setting_value)
-VALUES ('DEFAULT_LANGUAGE', 'en')
-ON DUPLICATE KEY UPDATE setting_value = setting_value;
+SELECT 'DEFAULT_LANGUAGE', 'en'
+WHERE NOT EXISTS (SELECT 1 FROM app_settings WHERE setting_key = 'DEFAULT_LANGUAGE');
 
 INSERT INTO app_settings (setting_key, setting_value)
-VALUES ('AUTO_CONFIRM', 'false')
-ON DUPLICATE KEY UPDATE setting_value = setting_value;
+SELECT 'AUTO_CONFIRM', 'false'
+WHERE NOT EXISTS (SELECT 1 FROM app_settings WHERE setting_key = 'AUTO_CONFIRM');
 
 INSERT INTO app_settings (setting_key, setting_value)
-VALUES ('SHOP_NAME', 'My Kirana Shop')
-ON DUPLICATE KEY UPDATE setting_value = setting_value;
+SELECT 'SHOP_NAME', 'My Kirana Shop'
+WHERE NOT EXISTS (SELECT 1 FROM app_settings WHERE setting_key = 'SHOP_NAME');
