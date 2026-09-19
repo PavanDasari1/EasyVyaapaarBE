@@ -62,11 +62,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- H2 for in-memory testing -->
+        <!-- H2 for in-memory testing & cloud fallback -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>test</scope>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
