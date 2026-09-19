@@ -1,0 +1,81 @@
+{
+  "products": {
+    "rice": "Rice",
+    "wheat": "Wheat",
+    "atta": "Wheat",
+    "sugar": "Sugar",
+    "oil": "Cooking Oil",
+    "cooking oil": "Cooking Oil",
+    "dal": "Toor Dal",
+    "toor dal": "Toor Dal",
+    "moong dal": "Moong Dal",
+    "chana dal": "Chana Dal",
+    "lentils": "Toor Dal",
+    "salt": "Salt",
+    "biscuits": "Biscuits",
+    "biscuit": "Biscuits",
+    "soap": "Soap",
+    "tea": "Tea",
+    "milk": "Milk",
+    "coffee": "Coffee",
+    "turmeric": "Turmeric",
+    "chilli": "Chilli Powder",
+    "chilli powder": "Chilli Powder",
+    "onions": "Onions",
+    "onion": "Onions",
+    "potatoes": "Potatoes",
+    "potato": "Potatoes",
+    "tomatoes": "Tomatoes",
+    "tomato": "Tomatoes",
+    "tamarind": "Tamarind",
+    "mustard": "Mustard Seeds",
+    "mustard seeds": "Mustard Seeds",
+    "cumin": "Cumin Seeds",
+    "cumin seeds": "Cumin Seeds",
+    "garlic": "Garlic",
+    "ginger": "Ginger",
+    "ghee": "Ghee",
+    "toothpaste": "Toothpaste",
+    "paste": "Toothpaste",
+    "shampoo": "Shampoo",
+    "eggs": "Eggs",
+    "egg": "Eggs",
+    "poha": "Poha",
+    "rava": "Rava",
+    "suji": "Rava",
+    "jaggery": "Jaggery"
+  },
+  "add_keywords": [
+    "add", "added", "came", "received", "arrived", "stock in", "purchase", "bought", "loaded", "incoming", "stocked"
+  ],
+  "remove_keywords": [
+    "remove", "removed", "sold", "sell", "sale", "out", "taken", "used", "dispatched", "consumed", "give", "gave", "deduct"
+  ],
+  "query_stock_keywords": [
+    "how much", "how many", "check stock", "stock check", "quantity", "available", "balance", "remaining", "left", "total"
+  ],
+  "low_stock_keywords": [
+    "low", "running low", "low stock", "less", "shortage", "short", "out of stock", "reorder", "what to order", "should order", "need to order"
+  ],
+  "number_words": {
+    "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+    "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10,
+    "eleven": 11, "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15,
+    "sixteen": 16, "seventeen": 17, "eighteen": 18, "nineteen": 19, "twenty": 20,
+    "twenty five": 25, "thirty": 30, "forty": 40, "fifty": 50,
+    "hundred": 100, "a hundred": 100, "one hundred": 100
+  },
+  "units": {
+    "bag": "BAG", "bags": "BAG", "sack": "BAG", "sacks": "BAG",
+    "kg": "KG", "kgs": "KG", "kilogram": "KG", "kilograms": "KG", "kilo": "KG", "kilos": "KG",
+    "gram": "GRAM", "grams": "GRAM", "gm": "GRAM", "gms": "GRAM", "g": "GRAM",
+    "litre": "LITRE", "litres": "LITRE", "liter": "LITRE", "liters": "LITRE", "l": "LITRE",
+    "ml": "ML", "millilitre": "ML", "millilitres": "ML",
+    "piece": "PIECE", "pieces": "PIECE", "pc": "PIECE", "pcs": "PIECE", "unit": "PIECE", "units": "PIECE",
+    "carton": "CARTON", "cartons": "CARTON",
+    "box": "BOX", "boxes": "BOX",
+    "packet": "PACKET", "packets": "PACKET", "pkt": "PACKET",
+    "dozen": "DOZEN", "dozens": "DOZEN",
+    "quintal": "QUINTAL", "quintals": "QUINTAL"
+  }
+}
