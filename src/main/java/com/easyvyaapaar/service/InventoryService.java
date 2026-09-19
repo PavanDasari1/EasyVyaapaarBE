@@ -102,17 +102,20 @@ public class InventoryService {
         return TransactionDTO.from(saved);
     }
 
+    @Transactional(readOnly = true)
     public Page<TransactionDTO> getTransactions(int page, int size) {
         return transactionRepository.findAllByOrderByCreatedAtDesc(
                         PageRequest.of(page, size, Sort.by("createdAt").descending()))
                 .map(TransactionDTO::from);
     }
 
+    @Transactional(readOnly = true)
     public List<TransactionDTO> getTransactionsByProduct(Long productId) {
         return transactionRepository.findByProductIdOrderByCreatedAtDesc(productId)
                 .stream().map(TransactionDTO::from).collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
     public List<TransactionDTO> getRecentTransactions() {
         return transactionRepository.findTop10ByOrderByCreatedAtDesc()
                 .stream().map(TransactionDTO::from).collect(Collectors.toList());
