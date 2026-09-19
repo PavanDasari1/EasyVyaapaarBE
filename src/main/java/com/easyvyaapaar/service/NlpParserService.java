@@ -130,9 +130,8 @@ public class NlpParserService implements VoiceProcessingService {
         if (hasAdd) {
             return Intent.ADD_STOCK;
         }
-        // Heuristic: if there's a quantity but no explicit intent keyword, assume ADD
-        // (e.g., "Rice 5 bags" → likely ADD)
-        return Intent.UNKNOWN;
+        // Default heuristic: If user specifies quantity/product without explicit 'remove', assume ADD
+        return Intent.ADD_STOCK;
     }
 
     private String extractUnit(String[] tokens) {
@@ -166,6 +165,20 @@ public class NlpParserService implements VoiceProcessingService {
                         || token.contains(product.getName().toLowerCase())) {
                     return Optional.of(product.getName());
                 }
+            }
+        }
+
+        // 4. Dynamic extraction: Pick first candidate token that is not a quantity, unit, or intent word
+        for (String token : tokens) {
+            String cleanToken = token.replaceAll("[^a-zA-Z0-9అ-ఱఆ-ఔअ-ह]", "").trim();
+            if (cleanToken.length() >= 2
+                    && !unitNormalizer.normalize(cleanToken).isPresent()
+                    && !numberWordParser.extractQuantity(cleanToken).isPresent()
+                    && !dictionary.isAddKeyword(cleanToken)
+                    && !dictionary.isRemoveKeyword(cleanToken)
+                    && !cleanToken.matches("\\d+(\\.\\d+)?")) {
+                String capitalized = cleanToken.substring(0, 1).toUpperCase() + cleanToken.substring(1).toLowerCase();
+                return Optional.of(capitalized);
             }
         }
 
