@@ -28,7 +28,7 @@ public class MultilingualDictionary {
     private final List<String> removeKeywords = new ArrayList<>();
     private final List<String> queryStockKeywords = new ArrayList<>();
     private final List<String> lowStockKeywords = new ArrayList<>();
-    private final Map<String, Integer> numberWordMap = new HashMap<>();          // number word → int
+    private final Map<String, Double> numberWordMap = new HashMap<>();          // number word → double
     private final Map<String, String> unitAliasMap = new HashMap<>();            // regional unit → normalized code
 
     private static final String[] DICT_FILES = {
@@ -76,7 +76,7 @@ public class MultilingualDictionary {
     private void loadNumberWords(JsonNode node) {
         if (node.isMissingNode()) return;
         node.fields().forEachRemaining(e ->
-                numberWordMap.put(e.getKey().toLowerCase(), e.getValue().asInt()));
+                numberWordMap.put(e.getKey().toLowerCase(), e.getValue().asDouble()));
     }
 
     private void loadUnits(JsonNode node) {
@@ -107,7 +107,7 @@ public class MultilingualDictionary {
         return lowStockKeywords.stream().anyMatch(kw -> token.toLowerCase().contains(kw));
     }
 
-    public Optional<Integer> resolveNumberWord(String token) {
+    public Optional<Double> resolveNumberWord(String token) {
         return Optional.ofNullable(numberWordMap.get(token.toLowerCase()));
     }
 
@@ -121,5 +121,5 @@ public class MultilingualDictionary {
     public List<String> getAllLowStockKeywords() { return Collections.unmodifiableList(lowStockKeywords); }
     public Map<String, String> getProductAliasMap() { return Collections.unmodifiableMap(productAliasMap); }
     public Map<String, String> getUnitAliasMap() { return Collections.unmodifiableMap(unitAliasMap); }
-    public Map<String, Integer> getNumberWordMap() { return Collections.unmodifiableMap(numberWordMap); }
+    public Map<String, Double> getNumberWordMap() { return Collections.unmodifiableMap(numberWordMap); }
 }

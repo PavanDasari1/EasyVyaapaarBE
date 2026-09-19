@@ -170,14 +170,14 @@ public class NlpParserService implements VoiceProcessingService {
 
         // 4. Dynamic extraction: Pick first candidate token that is not a quantity, unit, or intent word
         for (String token : tokens) {
-            String cleanToken = token.replaceAll("[^a-zA-Z0-9అ-ఱఆ-ఔअ-ह]", "").trim();
+            String cleanToken = token.replaceAll("[^\\u0030-\\u0039\\u0041-\\u005A\\u0061-\\u007A\\u0C00-\\u0C7F\\u0900-\\u097F]", "").trim();
             if (cleanToken.length() >= 2
                     && !unitNormalizer.normalize(cleanToken).isPresent()
                     && !numberWordParser.extractQuantity(cleanToken).isPresent()
                     && !dictionary.isAddKeyword(cleanToken)
                     && !dictionary.isRemoveKeyword(cleanToken)
                     && !cleanToken.matches("\\d+(\\.\\d+)?")) {
-                String capitalized = cleanToken.substring(0, 1).toUpperCase() + cleanToken.substring(1).toLowerCase();
+                String capitalized = cleanToken.substring(0, 1).toUpperCase() + cleanToken.substring(1);
                 return Optional.of(capitalized);
             }
         }

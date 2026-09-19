@@ -45,17 +45,17 @@ public class NumberWordParser {
         String[] tokens = normalizedText.split("[\\s,।、]+");
         for (int i = 0; i < tokens.length - 1; i++) {
             String twoToken = tokens[i] + " " + tokens[i + 1];
-            Optional<Integer> numWord = dictionary.resolveNumberWord(twoToken);
+            Optional<Double> numWord = dictionary.resolveNumberWord(twoToken);
             if (numWord.isPresent()) {
-                return Optional.of(numWord.get().doubleValue());
+                return numWord;
             }
         }
 
         // 4. Try single token number word lookup
         for (String token : tokens) {
-            Optional<Integer> numWord = dictionary.resolveNumberWord(token);
+            Optional<Double> numWord = dictionary.resolveNumberWord(token);
             if (numWord.isPresent()) {
-                return Optional.of(numWord.get().doubleValue());
+                return numWord;
             }
         }
 
@@ -64,7 +64,7 @@ public class NumberWordParser {
             for (var entry : dictionary.getNumberWordMap().entrySet()) {
                 String word = entry.getKey();
                 if (word.length() >= 2 && token.startsWith(word)) {
-                    return Optional.of(entry.getValue().doubleValue());
+                    return Optional.of(entry.getValue());
                 }
             }
         }
