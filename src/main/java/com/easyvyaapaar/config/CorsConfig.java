@@ -11,28 +11,36 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * CORS configuration.
- * Allowed origins are read from the environment variable CORS_ALLOWED_ORIGINS.
- * Never hardcoded in production.
+ * Universal CORS configuration supporting wildcards and cross-origin Netlify requests.
  */
 @Configuration
 public class CorsConfig {
 
-    @Value("${app.cors.allowed-origins:http://localhost:5173,http://localhost:3000}")
+    @Value("${app.cors.allowed-origins:*}")
     private String allowedOriginsStr;
 
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
-        List<String> origins = Arrays.asList(allowedOriginsStr.split(","));
-        config.setAllowedOrigins(origins);
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+
+        if (allowedOriginsStr != null && !allowedOriginsStr.trim().equals("*")) {
+            List<String> origins = Arrays.stream(allowedOriginsStr.split(","))
+                    .map(String::trim)
+                    .filter(s -> !s.isEmpty())
+                    .toList();
+            config.setAllowedOrigins(origins);
+        } else {
+            // Allows wildcard domains (*, netlify.app, localhost) without throwing IllegalArgumentException
+            config.addAllowedOriginPattern("*");
+        }
+
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
         config.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", config);
+        source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
 }
