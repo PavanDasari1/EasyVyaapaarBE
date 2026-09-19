@@ -196,13 +196,13 @@
   "add_keywords": [
     "వచ్చాయి", "వచ్చింది", "వచ్చాడు", "జోడించు", "జోడించండి", "వేయండి",
     "యాడ్", "add", "వచ్చారు", "వచ్చాము", "తీసుకువచ్చారు", "కొన్నాం", "కొనుగోలు",
-    "తెచ్చాము", "తెచ్చారు", "కలపండి", "చేర్చు", "వచ్చాయండి",
+    "తెచ్చాము", "తెచ్చారు", "కలపండి", "చేర్చు", "వచ్చాయండి", "వచ్చినవి", "స్టాక్",
     "vachayi", "vachindi", "vachhai", "vachhaayi", "vacharu", "vachamu", "add cheyyi", "add chey", "koni", "techamu", "techaru", "kalapu", "serchu"
   ],
   "remove_keywords": [
     "అమ్మాము", "అమ్మారు", "అమ్మాయి", "తీసివేయండి", "తగ్గించు", "బయటకు",
     "అమ్మినారు", "ఇచ్చారు", "ఇచ్చాం", "విక్రయించారు", "sold", "remove",
-    "అమ్మాను", "అమ్మేసాం", "తగ్గించు",
+    "అమ్మాను", "అమ్మేసాం", "అమ్మేసాము", "అమ్మేశాం", "తీసేశాం", "తీసేయ్", "తగ్గించు", "సేల్",
     "ammamu", "ammaru", "amminaru", "ammi", "ammanu", "ammesam", "theesey", "theeseyandi", "thagginchu", "ichamu", "icharu"
   ],
   "query_stock_keywords": [
@@ -262,15 +262,15 @@
     "ఐదున్నర": 5.5, "aidunnera": 5.5
   },
   "units": {
-    "బస్తా": "BAG", "బస్తాలు": "BAG", "సంచి": "BAG", "సంచులు": "BAG", "basta": "BAG", "bastalu": "BAG", "sanchi": "BAG",
-    "కేజీ": "KG", "కిలో": "KG", "కిలోలు": "KG", "kg": "KG", "kilo": "KG", "kilolu": "KG",
-    "గ్రాము": "GRAM", "గ్రాములు": "GRAM", "gram": "GRAM", "gramulu": "GRAM",
-    "లీటరు": "LITRE", "లీటర్లు": "LITRE", "లీటర్": "LITRE", "litre": "LITRE", "liter": "LITRE", "litrelu": "LITRE",
+    "బస్తా": "BAG", "బస్తాలు": "BAG", "బస్తాల": "BAG", "సంచి": "BAG", "సంచులు": "BAG", "సంచుల": "BAG", "basta": "BAG", "bastalu": "BAG", "sanchi": "BAG",
+    "కేజీ": "KG", "కేజీలు": "KG", "కేజీల": "KG", "కిలో": "KG", "కిలోలు": "KG", "కిలోల": "KG", "kg": "KG", "kilo": "KG", "kilolu": "KG",
+    "గ్రాము": "GRAM", "గ్రాములు": "GRAM", "గ్రాముల": "GRAM", "gram": "GRAM", "gramulu": "GRAM",
+    "లీటరు": "LITRE", "లీటర్లు": "LITRE", "లీటర్ల": "LITRE", "లీటర్": "LITRE", "litre": "LITRE", "liter": "LITRE", "litrelu": "LITRE",
     "మిల్లీ": "ML", "ml": "ML",
-    "పీస్": "PIECE", "ముక్క": "PIECE", "ముక్కలు": "PIECE", "piece": "PIECE", "piecelu": "PIECE",
-    "కార్టన్": "CARTON", "carton": "CARTON",
-    "పెట్టె": "BOX", "పెట్టెలు": "BOX", "బాక్స్": "BOX", "box": "BOX", "pette": "BOX",
-    "ప్యాకెట్": "PACKET", "ప్యాకెట్లు": "PACKET", "packet": "PACKET", "packetlu": "PACKET", "packelu": "PACKET",
+    "పీస్": "PIECE", "పీసులు": "PIECE", "ముక్క": "PIECE", "ముక్కలు": "PIECE", "piece": "PIECE", "piecelu": "PIECE",
+    "కార్టన్": "CARTON", "కార్టన్లు": "CARTON", "carton": "CARTON",
+    "పెట్టె": "BOX", "పెట్టెలు": "BOX", "పెట్టెల": "BOX", "బాక్స్": "BOX", "box": "BOX", "pette": "BOX",
+    "ప్యాకెట్": "PACKET", "ప్యాకెట్లు": "PACKET", "ప్యాకెట్ల": "PACKET", "packet": "PACKET", "packetlu": "PACKET", "packelu": "PACKET",
     "డజను": "DOZEN", "dozen": "DOZEN"
   }
 }

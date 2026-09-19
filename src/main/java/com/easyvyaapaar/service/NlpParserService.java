@@ -143,29 +143,30 @@ public class NlpParserService implements VoiceProcessingService {
     }
 
     private Optional<String> extractProduct(String[] tokens, String normalized) {
-        // 1. Check dictionary aliases (regional words → English product name)
+        // 1. Check if normalized full sentence contains any dictionary product alias key (longest key first)
+        List<String> sortedAliasKeys = dictionary.getProductAliasMap().keySet().stream()
+                .sorted((a, b) -> Integer.compare(b.length(), a.length()))
+                .toList();
+
+        for (String aliasKey : sortedAliasKeys) {
+            if (aliasKey.length() >= 2 && normalized.contains(aliasKey)) {
+                return Optional.of(dictionary.getProductAliasMap().get(aliasKey));
+            }
+        }
+
+        // 2. Check if normalized full sentence contains any DB active product name
+        List<com.easyvyaapaar.entity.Product> allProducts = productRepository.findByActiveTrueOrderByNameAsc();
+        for (var product : allProducts) {
+            String pNameLower = product.getName().toLowerCase().trim();
+            if (pNameLower.length() >= 2 && normalized.contains(pNameLower)) {
+                return Optional.of(product.getName());
+            }
+        }
+
+        // 3. Fallback per-token alias check
         for (String token : tokens) {
             Optional<String> alias = dictionary.resolveProductAlias(token);
             if (alias.isPresent()) return alias;
-        }
-
-        // 2. Multi-token alias check (e.g., "cooking oil" as two tokens)
-        for (int i = 0; i < tokens.length - 1; i++) {
-            String twoToken = tokens[i] + " " + tokens[i + 1];
-            Optional<String> alias = dictionary.resolveProductAlias(twoToken);
-            if (alias.isPresent()) return alias;
-        }
-
-        // 3. Fuzzy match against DB product names
-        List<com.easyvyaapaar.entity.Product> allProducts = productRepository.findByActiveTrueOrderByNameAsc();
-        for (String token : tokens) {
-            if (token.length() < 3) continue; // skip short tokens
-            for (var product : allProducts) {
-                if (product.getName().toLowerCase().contains(token)
-                        || token.contains(product.getName().toLowerCase())) {
-                    return Optional.of(product.getName());
-                }
-            }
         }
 
         // 4. Dynamic extraction: Pick first candidate token that is not a quantity, unit, or intent word
